@@ -2,5 +2,5 @@
 
 int main()
 {
-    std::cout << "Dark Souls 2D!" << std::endl;
+    std::cout << "Dark Souls 2Ds!" << std::endl;
 }
