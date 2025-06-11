@@ -1,5 +1,7 @@
 add_executable(${DS2D_GAME_TARGET_NAME}
     ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/Application.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Application.cpp
 )
 
 target_link_libraries(${DS2D_GAME_TARGET_NAME} PUBLIC sfml-graphics)
