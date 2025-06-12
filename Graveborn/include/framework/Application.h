@@ -8,8 +8,10 @@ namespace gb{
             Application();
             void Run();
         private:
-            void Tick(float deltaTime);
-            void Render();
+            void TickInternal(float deltaTime);
+            void RenderInternal();
+            virtual void Render();
+            virtual void Tick(float deltaTime);
             sf::RenderWindow mWin;
             float mTargetFramerate;
             sf::Clock mTickClock;

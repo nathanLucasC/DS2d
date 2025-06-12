@@ -27,8 +27,8 @@ namespace gb{
 
             while(accumulatedTime > targetDeltaTime) {
                 accumulatedTime -= targetDeltaTime;
-                Tick(targetDeltaTime);
-                Render();
+                TickInternal(targetDeltaTime);
+                RenderInternal();
             }
         }
 
@@ -36,11 +36,29 @@ namespace gb{
 
     }
 
-    void Application::Tick(float deltaTime) {
+    void Application::TickInternal(float deltaTime) {
+
+        Tick(deltaTime);
         std::cout << "Framerate: " << 1.f / deltaTime << std::endl;
     }
 
-    void Application::Render() {
+    void Application::RenderInternal() {
+
+        mWin.clear();
+
+        Render();
         
+        mWin.display();
+        
+    }
+
+    void Application::Render() {
+
+        
+    }
+
+    void Application::Tick(float deltaTime) {
+
+
     }
 }
