@@ -16,5 +16,6 @@ int main()
             }
         }
     }
+    
     std::cout << "Build Successful. Application closed." << std::endl; 
 }
