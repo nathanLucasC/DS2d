@@ -4,11 +4,16 @@
 
 namespace ly{
 
-    Application::Application() : mWin{sf::VideoMode(800, 600), "Win"} {
+    Application::Application() : mWin{sf::VideoMode(800, 600), "Win"}, mTargetFramerate{60.f}, mTickClock{} {
         
     }
 
     void Application::Run(){
+
+        mTickClock.restart();
+
+        float accumulatedTime = 0.f;
+        float targetDeltaTime = 1.f / mTargetFramerate;
 
         while (mWin.isOpen()) {
             sf::Event winEvent;
@@ -17,7 +22,25 @@ namespace ly{
                 mWin.close();
                 }
             }
+
+            accumulatedTime += mTickClock.restart().asSeconds();
+
+            while(accumulatedTime > targetDeltaTime) {
+                accumulatedTime -= targetDeltaTime;
+                Tick(targetDeltaTime);
+                Render();
+            }
         }
+
         std::cout << "Build Successful. Application closed." << std::endl; 
+
+    }
+
+    void Application::Tick(float deltaTime) {
+        std::cout << "Framerate: " << 1.f / deltaTime << std::endl;
+    }
+
+    void Application::Render() {
+        
     }
 }
