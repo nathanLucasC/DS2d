@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-namespace ly{
+namespace gb{
 
     class Application{
         public:
