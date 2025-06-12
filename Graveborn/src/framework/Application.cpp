@@ -2,7 +2,7 @@
 #include <iostream>
 #include <memory>
 
-namespace ly{
+namespace gb{
 
     Application::Application() : mWin{sf::VideoMode(800, 600), "Win"}, mTargetFramerate{60.f}, mTickClock{} {
         

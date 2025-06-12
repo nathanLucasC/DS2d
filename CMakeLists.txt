@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.28.3)
 
-project(2dDarkSouls
+project(Graveborn
     VERSION 1.0.0
     LANGUAGES C CXX
 )
@@ -22,6 +22,6 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(${SFML_LIB_NAME})
 
-set(DS2D_GAME_TARGET_NAME DS2dGame)
+set(GRAVEBORN_TARGET_NAME GravebornGame)
 
-add_subdirectory(DS2d)
+add_subdirectory(Graveborn)
