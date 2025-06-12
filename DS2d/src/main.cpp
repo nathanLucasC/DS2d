@@ -1,21 +1,11 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "framework/Application.h"
+#include <memory>
 
-int main()
-{
-    sf::RenderWindow renderWin(sf::VideoMode(800, 600), "Win");
+int main() {
 
-    while (renderWin.isOpen())
-    {
-        sf::Event winEvent;
-        while (renderWin.pollEvent(winEvent)) 
-        {
-            if (winEvent.type == sf::Event::EventType::Closed) 
-            {
-                renderWin.close();
-            }
-        }
-    }
+    std::unique_ptr<ly::Application> app{new ly::Application()};
+    app->Run();
     
-    std::cout << "Build Successful. Application closed." << std::endl; 
 }
