@@ -1,5 +1,7 @@
 #include "framework/Application.h"
+#include <framework/Core.h>
 #include <iostream>
+#include <stdio.h>
 #include <memory>
 
 namespace gb{
@@ -23,13 +25,17 @@ namespace gb{
                 }
             }
 
-            accumulatedTime += mTickClock.restart().asSeconds();
+            float frameDeltaTime = mTickClock.restart().asSeconds();
+
+            accumulatedTime += frameDeltaTime;
 
             while(accumulatedTime > targetDeltaTime) {
                 accumulatedTime -= targetDeltaTime;
                 TickInternal(targetDeltaTime);
                 RenderInternal();
             }
+
+            LOG("FPS: %f", 1.f / frameDeltaTime );
         }
 
         std::cout << "Build Successful. Application closed." << std::endl; 
@@ -39,7 +45,7 @@ namespace gb{
     void Application::TickInternal(float deltaTime) {
 
         Tick(deltaTime);
-        std::cout << "Framerate: " << 1.f / deltaTime << std::endl;
+
     }
 
     void Application::RenderInternal() {
