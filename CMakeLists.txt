@@ -22,6 +22,8 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(${SFML_LIB_NAME})
 
-set(GRAVEBORN_TARGET_NAME GravebornGame)
+set(GRAVEBORN_ENGINE_TARGET_NAME GravebornEngine)
+set(GRAVEBORN_GAME_TARGET_NAME GravebornGame)
 
-add_subdirectory(Graveborn)
+add_subdirectory(GravebornGame)
+add_subdirectory(GravebornEngine)
