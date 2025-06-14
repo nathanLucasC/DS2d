@@ -1,4 +1,5 @@
 #include "gameFramework/GameApplication.h"
+#include "framework/Level.h"
 
 gb::Application* GetApplication() {
 
@@ -6,6 +7,10 @@ gb::Application* GetApplication() {
 
 }
 
-namespace gb {
-    
+namespace gb 
+{
+    GameApplication::GameApplication()
+    {
+        LoadLevel<Level>();
+    }
 }

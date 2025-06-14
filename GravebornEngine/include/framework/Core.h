@@ -1,9 +1,13 @@
+#pragma once
+
 #include <stdio.h>
 #include <memory>
 #include <map>
+#include <vector>
 #include <unordered_map>
 
-namespace gb {
+namespace gb 
+{
 
     template <typename T>
     using unique = std::unique_ptr<T>;
