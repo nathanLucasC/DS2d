@@ -1,9 +1,12 @@
 #pragma once
 #include <framework/Application.h>
 
-namespace gb {
+namespace gb
+{
 
-    class GameApplication : public Application {
-
+    class GameApplication : public Application
+    {
+    public:
+        GameApplication();
     };
 }

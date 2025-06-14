@@ -1,27 +1,33 @@
 #include "framework/Application.h"
 #include <framework/Core.h>
+#include <framework/Level.h>
 #include <iostream>
 #include <stdio.h>
 #include <memory>
 
-namespace gb{
+namespace gb
+{
 
-    Application::Application() : mWin{sf::VideoMode(800, 600), "Win"}, mTargetFramerate{60.f}, mTickClock{} {
-        
+    Application::Application() : mWin{sf::VideoMode(800, 600), "Win"}, mTargetFramerate{60.f}, mTickClock{}, currentLevel{nullptr}
+    {
     }
 
-    void Application::Run(){
+    void Application::Run()
+    {
 
         mTickClock.restart();
 
         float accumulatedTime = 0.f;
         float targetDeltaTime = 1.f / mTargetFramerate;
 
-        while (mWin.isOpen()) {
+        while (mWin.isOpen())
+        {
             sf::Event winEvent;
-            while (mWin.pollEvent(winEvent)) {
-                if (winEvent.type == sf::Event::EventType::Closed) {
-                mWin.close();
+            while (mWin.pollEvent(winEvent))
+            {
+                if (winEvent.type == sf::Event::EventType::Closed)
+                {
+                    mWin.close();
                 }
             }
 
@@ -29,42 +35,42 @@ namespace gb{
 
             accumulatedTime += frameDeltaTime;
 
-            while(accumulatedTime > targetDeltaTime) {
+            while (accumulatedTime > targetDeltaTime)
+            {
                 accumulatedTime -= targetDeltaTime;
                 TickInternal(targetDeltaTime);
                 RenderInternal();
             }
-
-            LOG("FPS: %f", 1.f / frameDeltaTime );
         }
 
-        std::cout << "Build Successful. Application closed." << std::endl; 
-
+        std::cout << "Build Successful. Application closed." << std::endl;
     }
 
-    void Application::TickInternal(float deltaTime) {
-
+    void Application::TickInternal(float deltaTime)
+    {
         Tick(deltaTime);
 
+        if (currentLevel)
+        {
+            currentLevel->TickInternal(deltaTime);
+        }
     }
 
-    void Application::RenderInternal() {
+    void Application::RenderInternal()
+    {
 
         mWin.clear();
 
         Render();
-        
+
         mWin.display();
-        
     }
 
-    void Application::Render() {
-
-        
+    void Application::Render()
+    {
     }
 
-    void Application::Tick(float deltaTime) {
-
-
+    void Application::Tick(float deltaTime)
+    {
     }
 }
